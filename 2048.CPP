@@ -113,27 +113,29 @@ void nos()
 		free1[k] = 0;
 		free2[k] = 0;
 	}
-	for(k=0;k<16;k++)
-	{        count = 0;
-		for(i=0;i<3;i++)
+	
+	count = 0;
+	for(i=0;i<3;i++)
+	{
+		for(j=0;j<3;j++)
 		{
-			for(j=0;j<3;j++)
+
+			if(grid[i][j] == 0)
 			{
-
-				if(grid[i][j] == 0)
-				{
-					++count;
-					free1[k] = i;
-					free2[k] = j;
-				}
-
+				free1[k] = i;
+				free2[k] = j;
+				++count;
 			}
+
 		}
 	}
+	
 
 	randomize();
 	rndm = 0;
-	rndm = random(count);
+	int rr = random(100) % 10;
+	int r = random(rr);
+	rndm = r + random(count);
 	a = free1[rndm];
 	b = free2[rndm];
 	grid[a][b] =obj.no_gen();
